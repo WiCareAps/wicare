@@ -10,7 +10,7 @@ import ChefIntro from '@/components/ChefIntro';
 
 // Private chef & catering is the main business (Nov 2026); cleaning + garden are additional services.
 const diningCards = [
-  { href: '/services/the-table/', Icon: ChefHat, da: 'Private middage', en: 'Private dinners' },
+  { href: '/privat-kok/', Icon: ChefHat, da: 'Private middage', en: 'Private dinners' },
   { href: '/firmacatering/', Icon: Building2, da: 'Firmacatering', en: 'Corporate catering' },
   { href: '/selskaber/', Icon: PartyPopper, da: 'Fester & selskaber', en: 'Parties & celebrations' },
 ];

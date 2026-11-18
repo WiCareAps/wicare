@@ -6,7 +6,7 @@ import { useLanguage } from '@/lib/i18n/LanguageContext';
 // Main offer (Nov 2026): WiCare is first and foremost a private chef & catering business.
 // Three dining offers with real event photos; cleaning + garden live in ExtraServices.tsx.
 const diningMeta = [
-  { href: '/services/the-table/', img: '/services/dining-event.webp' },
+  { href: '/privat-kok/', img: '/services/dining-event.webp' },
   { href: '/firmacatering/', img: '/services/dining-spread.webp' },
   { href: '/selskaber/', img: '/services/dining-seafood.webp' },
 ];

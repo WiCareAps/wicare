@@ -10,8 +10,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const area = getArea(slug);
   if (!area) return {};
-  const title = `Privat kok & catering i ${area.name} | WiCare`;
-  const description = `Privat kok og catering i ${area.name} (${area.postal}) – private middage, fester, firmaarrangementer og julefrokost ved en kok med 13+ års erfaring. Også rengøring og erhvervsrengøring. Ring +45 52 72 11 02.`;
+  // Searchers type "catering <town>" far more than "privat kok <town>" (Search Console, Nov 2026) → lead with catering.
+  const title = `Catering & privat kok i ${area.name} | WiCare`;
+  const description = `Catering og privat kok i ${area.name} (${area.postal}) – private middage, fester, firmaarrangementer og julefrokost ved en kok med 13+ års erfaring. Også rengøring og erhvervsrengøring. Ring +45 52 72 11 02.`;
   return {
     title,
     description,

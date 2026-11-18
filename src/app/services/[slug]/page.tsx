@@ -31,6 +31,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
+  // The private-dining page moved to /privat-kok/ (Nov 2026) — this URL only redirects there.
+  if (slug === 'the-table') return { title: daMeta['the-table'].title, description: daMeta['the-table'].description, alternates: { canonical: '/privat-kok/' } };
   const m = daMeta[slug] ?? { title: `${service.name} | WiCare ApS`, description: service.description, keywords: [] };
   return {
     title: m.title,
@@ -52,6 +54,18 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
+  // Moved to /privat-kok/. Static hosting can't send a 301, so: instant meta refresh (Google treats a
+  // 0-second refresh as a permanent redirect) + canonical (in generateMetadata) + a visible link.
+  if (slug === 'the-table') {
+    return (
+      <main className="min-h-screen flex items-center justify-center px-6 text-center">
+        <meta httpEquiv="refresh" content="0;url=/privat-kok/" />
+        <p className="text-primary text-lg">
+          Siden er flyttet: <a href="/privat-kok/" className="underline">Privat kok til middagen derhjemme →</a>
+        </p>
+      </main>
+    );
+  }
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wicare.vip';
   return (

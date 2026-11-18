@@ -31,21 +31,21 @@ import ContactTracking from '@/components/ContactTracking';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://wicare.vip";
 
 export const metadata: Metadata = {
-  title: "WiCare | Privat kok & catering nord for København",
+  title: "Privat kok & catering nord for København | WiCare",
   description: "Privat kok og catering til private middage, fester, firmaarrangementer og julefrokost nord for København. Kok med 13+ års erfaring, bl.a. fra Michelin-restauranter og Folketinget. Ring +45 52 72 11 02.",
   keywords: ["privat kok", "privat kok København", "privat kok Hellerup", "privat kok Gentofte", "privat kok Rudersdal", "catering nord for København", "catering Hellerup", "firmacatering", "julefrokost catering", "kok til fest", "catering til fest", "kok ud af huset", "privat middag", "fine dining hjemme", "WiCare"],
   metadataBase: new URL(siteUrl),
   alternates: { canonical: "/" },
   openGraph: {
     type: "website", locale: "da_DK", alternateLocale: "en_DK", siteName: "WiCare ApS",
-    title: "WiCare | Privat kok & catering nord for København",
+    title: "Privat kok & catering nord for København | WiCare",
     description: "Privat kok og catering til middage, fester, firmaarrangementer og julefrokost i Hellerup, Gentofte, Lyngby, Rudersdal og Hørsholm. Kok med 13+ års erfaring, bl.a. fra Michelin-restauranter og Folketinget.",
     url: siteUrl,
     images: [{ url: "/og-chef.jpg", width: 1200, height: 630, alt: "WiCare ApS" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "WiCare | Privat kok & catering nord for København",
+    title: "Privat kok & catering nord for København | WiCare",
     description: "Privat kok og catering til middage, fester, firmaarrangementer og julefrokost nord for København.",
     images: ["/og-chef.jpg"],
   },
@@ -105,7 +105,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               image: `${siteUrl}/og-chef.jpg`,
               priceRange: "$$$",
               slogan: "Discretion. Precision. Trust.",
-              description: "Private chef and catering north of Copenhagen: private dinners, parties and celebrations, corporate catering and Christmas lunches by a chef with 13+ years of experience, including Michelin-starred restaurants and the Danish Parliament. Also cleaning for homes and businesses and garden & construction work.",
+              description: "Privat kok og catering nord for København: private middage, fester og selskaber, firmacatering og julefrokost ved vores kok Wiktoria R., som har 13+ års erfaring, bl.a. fra Michelin-restauranter og som souschef i Folketinget. Derudover rengøring til hjem og erhverv samt have & byggeri. Pris aftales altid med kunden.",
+              knowsLanguage: ["da", "en"],
               address: { "@type": "PostalAddress", addressLocality: "Hellerup", addressRegion: "Capital Region of Denmark", addressCountry: "DK" },
               geo: { "@type": "GeoCoordinates", latitude: 55.7320, longitude: 12.5640 },
               areaServed: [
@@ -118,13 +119,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               taxID: "46213270",
               vatID: "DK46213270",
               identifier: { "@type": "PropertyValue", propertyID: "CVR", value: "46213270" },
-              founder: { "@type": "Person", name: "WiCare" },
+              // Add Google Business Profile / public Instagram URLs here once they exist.
               sameAs: [],
-              brand: [
-                { "@type": "Brand", name: "Private Dining & Catering", description: "Private dinners, events and corporate catering by a chef with 13+ years of experience, including Michelin-starred restaurants and the Danish Parliament" },
-                { "@type": "Brand", name: "Cleaning – Homes & Businesses", description: "VIP cleaning for private homes, offices and clinics" },
-                { "@type": "Brand", name: "Garden & Construction", description: "Garden work, landscaping and construction projects" },
-              ],
+              employee: {
+                "@type": "Person",
+                name: "Wiktoria R.",
+                jobTitle: "Privat kok",
+                description: "Kok med 13+ års erfaring, bl.a. fra Michelin-restauranter og som souschef i Folketinget.",
+                worksFor: { "@id": `${siteUrl}/#business` },
+              },
+              knowsAbout: ["Privat kok", "Catering", "Firmacatering", "Julefrokost", "Fine dining", "Konfirmation", "Bryllup", "Vinmenu"],
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Privat kok & catering",
+                itemListElement: [
+                  { name: "Privat kok til middagen derhjemme", url: `${siteUrl}/privat-kok/` },
+                  { name: "Firmacatering", url: `${siteUrl}/firmacatering/` },
+                  { name: "Fester & selskaber", url: `${siteUrl}/selskaber/` },
+                  { name: "Julefrokost", url: `${siteUrl}/julefrokost/` },
+                  { name: "Rengøring – hjem & erhverv", url: `${siteUrl}/services/the-home/` },
+                  { name: "Erhvervsrengøring", url: `${siteUrl}/erhvervsrengoering/` },
+                  { name: "Have & byggeri", url: `${siteUrl}/services/the-estate/` },
+                ].map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s.name, url: s.url, areaServed: "Nordsjælland / nord for København" } })),
+              },
             }),
           }}
         />

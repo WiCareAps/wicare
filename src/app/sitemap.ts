@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
     { url: `${baseUrl}/erhvervsrengoering/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${baseUrl}/privat-kok/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 }, // flagship: private dining
     { url: `${baseUrl}/firmacatering/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/selskaber/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/julefrokost/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
@@ -18,11 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/terms/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
     { url: `${baseUrl}/privacy/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
   ];
-  const servicePages: MetadataRoute.Sitemap = services.map((s) => ({
+  // the-table now redirects to /privat-kok/ (listed above), so only cleaning + garden remain here.
+  const servicePages: MetadataRoute.Sitemap = services.filter((s) => s.slug !== 'the-table').map((s) => ({
     url: `${baseUrl}/services/${s.slug}/`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
-    priority: s.slug === 'the-table' ? 0.95 : 0.6, // private dining is the main business
+    priority: 0.6,
   }));
   const blogPages: MetadataRoute.Sitemap = posts.map((p) => ({
     url: `${baseUrl}/blog/${p.slug}/`,
