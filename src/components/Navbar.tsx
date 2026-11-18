@@ -9,7 +9,7 @@ export default function Navbar() {
   const { t } = useLanguage();
   const navLinks = [
     // Private chef & catering is the main business (Nov 2026); other services sit under "Øvrige services".
-    { label: t.nav.chef, href: '/services/the-table/' },
+    { label: t.nav.chef, href: '/privat-kok/' },
     { label: t.nav.catering, href: '/firmacatering/' },
     { label: t.nav.xmas, href: '/julefrokost/' }, // seasonal: remove in January
     { label: t.nav.other, href: '/#additional' },

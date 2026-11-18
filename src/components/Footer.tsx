@@ -9,7 +9,7 @@ export default function Footer() {
   const { t } = useLanguage();
   const link = 'text-white/80 hover:text-accent transition-colors';
   const quickLinks = [
-    { href: '/services/the-table/', label: t.nav.chef },
+    { href: '/privat-kok/', label: t.nav.chef },
     { href: '/firmacatering/', label: t.nav.catering },
     { href: '/selskaber/', label: t.nav.parties },
     { href: '/julefrokost/', label: t.nav.xmas },
