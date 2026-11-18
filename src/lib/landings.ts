@@ -48,7 +48,7 @@ export const landings: Record<LandingKey, { da: LandingCopy; en: LandingCopy }> 
       more: [
         { href: '/firmacatering/', title: 'Firmacatering', desc: 'Møder, frokoster og arrangementer hele året.' },
         { href: '/selskaber/', title: 'Fester & selskaber', desc: 'Fødselsdage, konfirmationer, bryllupper og havefester.' },
-        { href: '/services/the-table/', title: 'Privat middag', desc: 'En privat kok til middagen derhjemme.' },
+        { href: '/privat-kok/', title: 'Privat middag', desc: 'En privat kok til middagen derhjemme.' },
       ],
       areasHeading: 'Vi kommer til jer i',
       faqHeading: 'Spørgsmål om julefrokost',
@@ -84,7 +84,7 @@ export const landings: Record<LandingKey, { da: LandingCopy; en: LandingCopy }> 
       more: [
         { href: '/firmacatering/', title: 'Corporate catering', desc: 'Meetings, lunches and events all year round.' },
         { href: '/selskaber/', title: 'Parties & celebrations', desc: 'Birthdays, confirmations, weddings and garden parties.' },
-        { href: '/services/the-table/', title: 'Private dinner', desc: 'A private chef for dinner at home.' },
+        { href: '/privat-kok/', title: 'Private dinner', desc: 'A private chef for dinner at home.' },
       ],
       areasHeading: 'We come to you in',
       faqHeading: 'Christmas lunch questions',
@@ -199,7 +199,7 @@ export const landings: Record<LandingKey, { da: LandingCopy; en: LandingCopy }> 
       ],
       moreHeading: 'Mere fra vores køkken',
       more: [
-        { href: '/services/the-table/', title: 'Privat middag', desc: 'En privat kok til middagen derhjemme.' },
+        { href: '/privat-kok/', title: 'Privat middag', desc: 'En privat kok til middagen derhjemme.' },
         { href: '/firmacatering/', title: 'Firmacatering', desc: 'Møder, receptioner og kundearrangementer.' },
         { href: '/julefrokost/', title: 'Julefrokost 2026', desc: 'Julefrokost derhjemme eller i firmaet – book i god tid.' },
       ],
@@ -237,7 +237,7 @@ export const landings: Record<LandingKey, { da: LandingCopy; en: LandingCopy }> 
       ],
       moreHeading: 'More from our kitchen',
       more: [
-        { href: '/services/the-table/', title: 'Private dinner', desc: 'A private chef for dinner at home.' },
+        { href: '/privat-kok/', title: 'Private dinner', desc: 'A private chef for dinner at home.' },
         { href: '/firmacatering/', title: 'Corporate catering', desc: 'Meetings, receptions and client events.' },
         { href: '/julefrokost/', title: 'Christmas lunch 2026', desc: 'A Christmas lunch at home or at the company – book early.' },
       ],
