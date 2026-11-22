@@ -1,13 +1,29 @@
 'use client';
+import { usePathname, useRouter } from 'next/navigation';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
+import { enAlternate, toDa } from '@/lib/i18n/routes';
 
+// EN / DK switch. Pages that exist as crawlable English URLs (/en/...) switch by navigating
+// between the two URLs; every other page switches its text in place.
 export default function LanguageSwitcher() {
-  const { locale, setLocale } = useLanguage();
+  const { locale, setLocale, enRoute } = useLanguage();
+  const pathname = usePathname() || '/';
+  const router = useRouter();
+
+  const goEn = () => {
+    setLocale('en');
+    const alt = enRoute ? null : enAlternate(pathname);
+    if (alt) router.push(alt);
+  };
+  const goDa = () => {
+    setLocale('da');
+    if (enRoute) router.push(toDa(pathname));
+  };
 
   return (
     <div className="flex items-center gap-1 bg-white/10 rounded-lg p-1">
       <button
-        onClick={() => setLocale('en')}
+        onClick={goEn}
         aria-label="Switch to English"
         aria-pressed={locale === 'en'}
         className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${
@@ -21,7 +37,7 @@ export default function LanguageSwitcher() {
         <span>EN</span>
       </button>
       <button
-        onClick={() => setLocale('da')}
+        onClick={goDa}
         aria-label="Skift til dansk"
         aria-pressed={locale === 'da'}
         className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-1.5 ${

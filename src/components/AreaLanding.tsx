@@ -5,8 +5,10 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingActions from '@/components/FloatingActions';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
-import { getArea, areas, areaBusiness, areaDining } from '@/lib/areas';
+import { getArea, areas, areaBusiness, areaDining, areaDepth } from '@/lib/areas';
 import ChefIntro from '@/components/ChefIntro';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
+import { waEnquiry } from '@/lib/whatsapp';
 
 // Private chef & catering is the main business (Nov 2026); cleaning + garden are additional services.
 const diningCards = [
@@ -26,7 +28,8 @@ export default function AreaLanding({ slug }: { slug: string }) {
   const c = area[locale === 'da' ? 'da' : 'en'];
   const da = locale === 'da';
 
-  const wa = `https://wa.me/4552721102?text=${encodeURIComponent(t.floating.whatsappMsg)}`;
+  const wa = waEnquiry(locale, { town: area.name });
+  const depth = areaDepth[area.slug]?.[locale === 'da' ? 'da' : 'en'];
   const nearby = area.nearby.map(getArea).filter(Boolean);
   const biz = areaBusiness[area.slug]?.[locale === 'da' ? 'da' : 'en'];
   const dining = areaDining[area.slug]?.[locale === 'da' ? 'da' : 'en'] ?? c.intro;
@@ -86,7 +89,8 @@ export default function AreaLanding({ slug }: { slug: string }) {
                 <Phone size={22} />+45 52 72 11 02
               </a>
               <a href={wa} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-medium px-7 py-4 rounded-2xl transition-all text-lg">
-                WhatsApp
+                <WhatsAppIcon size={20} />
+                {t.floating.waEnquiry}
               </a>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 text-white/70 text-sm">
@@ -118,6 +122,29 @@ export default function AreaLanding({ slug }: { slug: string }) {
             </div>
           </div>
         </section>
+
+        {/* Local depth (5 towns closest to page one, Nov 2026): unique local text + FAQ */}
+        {depth && (
+          <section className="pb-16">
+            <div className="max-w-3xl mx-auto px-6 lg:px-8">
+              <h2 className="font-serif text-2xl md:text-3xl text-primary font-semibold text-center mb-6">{depth.heading}</h2>
+              {depth.text.map((para) => (
+                <p key={para.slice(0, 32)} className="text-gray-700 text-lg leading-relaxed mb-4">{para}</p>
+              ))}
+              <div className="mt-8 divide-y divide-primary/10 border-y border-primary/10">
+                {depth.faq.map((f) => (
+                  <details key={f.q} className="group py-5">
+                    <summary className="cursor-pointer list-none flex items-center justify-between gap-4 font-semibold text-primary">
+                      {f.q}
+                      <span className="text-accent-dark text-xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+                    </summary>
+                    <p className="text-gray-600 leading-relaxed mt-3">{f.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         <ChefIntro />
 
@@ -185,9 +212,15 @@ export default function AreaLanding({ slug }: { slug: string }) {
               {L.ctaTitle} {area.name}?
             </h2>
             <p className="text-white/75 text-lg mb-8">{L.ctaDesc}</p>
-            <a href="tel:+4552721102" className="inline-flex items-center justify-center gap-3 bg-accent hover:bg-accent-deep text-primary font-semibold px-8 py-4 rounded-2xl transition-all text-lg">
-              <Phone size={22} />+45 52 72 11 02
-            </a>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="tel:+4552721102" className="inline-flex items-center justify-center gap-3 bg-accent hover:bg-accent-deep text-primary font-semibold px-8 py-4 rounded-2xl transition-all text-lg">
+                <Phone size={22} />+45 52 72 11 02
+              </a>
+              <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-medium px-7 py-4 rounded-2xl transition-all text-lg">
+                <WhatsAppIcon size={20} />
+                {t.floating.waEnquiry}
+              </a>
+            </div>
           </div>
         </section>
       </main>

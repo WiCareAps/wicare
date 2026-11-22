@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
-import { Phone, CheckCircle2, Building2, Home, Wine, Presentation, GlassWater, Handshake, TreePine, Cake, Sparkles, Heart, Sun } from 'lucide-react';
+import { Phone, CheckCircle2, Building2, Home, Wine, Presentation, GlassWater, Handshake, TreePine, Cake, Sparkles, Heart, Sun, UtensilsCrossed, Users } from 'lucide-react';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
+import { waEnquiry } from '@/lib/whatsapp';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingActions from '@/components/FloatingActions';
@@ -9,7 +11,7 @@ import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { landings, type LandingKey } from '@/lib/landings';
 import { areas } from '@/lib/areas';
 
-// Shared layout for the catering landing pages (/julefrokost/, /firmacatering/, /selskaber/). Copy lives in src/lib/landings.ts.
+// Shared layout for the catering landing pages (/julefrokost/, /firmacatering/, /selskaber/, /konfirmation/). Copy lives in src/lib/landings.ts.
 const visuals: Record<LandingKey, { img: string; alt: { da: string; en: string }; icons: React.ElementType[] }> = {
   julefrokost: {
     img: '/services/dining-event.webp',
@@ -26,13 +28,38 @@ const visuals: Record<LandingKey, { img: string; alt: { da: string; en: string }
     alt: { da: 'Anrettede retter til en fest', en: 'Plated dishes for a celebration' },
     icons: [Cake, Sparkles, Heart, Sun],
   },
+  konfirmation: {
+    img: '/services/dining-team.webp',
+    alt: { da: 'Kokke der anretter mad til en fest', en: 'Chefs plating food for a celebration' },
+    icons: [UtensilsCrossed, Users, Wine, Sparkles],
+  },
+};
+
+// Prefilled "Anledning" in the WhatsApp enquiry for each page.
+const occasion: Record<LandingKey, { da: string; en: string }> = {
+  julefrokost: { da: 'Julefrokost', en: 'Christmas lunch' },
+  firmacatering: { da: 'Firmaarrangement', en: 'Company event' },
+  selskaber: { da: 'Fest / selskab', en: 'Party / celebration' },
+  konfirmation: { da: 'Konfirmation', en: 'Confirmation' },
 };
 
 export default function LandingPage({ page }: { page: LandingKey }) {
-  const { locale } = useLanguage();
+  const { locale, lh, t } = useLanguage();
   const lang = locale === 'da' ? 'da' : 'en';
   const c = landings[page][lang];
   const v = visuals[page];
+  const wa = waEnquiry(locale, { occasion: occasion[page][lang] });
+  const waButton = (light: boolean) => (
+    <a
+      href={wa}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center justify-center gap-2.5 font-medium px-7 py-4 rounded-2xl transition-all text-lg ${light ? 'bg-white/10 hover:bg-white/20 border border-white/30 text-white' : 'bg-white border border-primary/15 hover:border-accent text-primary'}`}
+    >
+      <WhatsAppIcon size={20} />
+      {t.floating.waEnquiry}
+    </a>
+  );
 
   const phone = (
     <a
@@ -54,7 +81,10 @@ export default function LandingPage({ page }: { page: LandingKey }) {
             <p className="text-accent text-xs tracking-widest uppercase font-semibold mb-4">{c.badge}</p>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-white font-semibold mb-5 leading-tight">{c.h1}</h1>
             <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-8 max-w-3xl mx-auto">{c.intro}</p>
-            {phone}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              {phone}
+              {waButton(true)}
+            </div>
             <p className="text-white/60 text-sm mt-4">{c.ctaSecondary}</p>
           </div>
         </section>
@@ -134,7 +164,7 @@ export default function LandingPage({ page }: { page: LandingKey }) {
             <h2 className="font-serif text-2xl md:text-3xl text-primary font-semibold text-center mb-10">{c.moreHeading}</h2>
             <div className={`grid gap-6 ${c.more.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
               {c.more.map((m) => (
-                <Link key={m.href} href={m.href} className="group rounded-2xl border border-primary/10 p-7 hover:border-accent hover:shadow-lg transition-all">
+                <Link key={m.href} href={lh(m.href)} className="group rounded-2xl border border-primary/10 p-7 hover:border-accent hover:shadow-lg transition-all">
                   <h3 className="font-serif text-xl text-primary font-semibold mb-2">{m.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{m.desc}</p>
                   <span className="inline-block mt-4 text-accent-dark font-medium text-sm group-hover:translate-x-1 transition-transform">→</span>
@@ -181,7 +211,11 @@ export default function LandingPage({ page }: { page: LandingKey }) {
           <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="font-serif text-2xl md:text-3xl text-white font-semibold mb-3">{c.ctaTitle}</h2>
             <p className="text-white/75 text-lg mb-8">{c.ctaDesc}</p>
-            {phone}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              {phone}
+              {waButton(true)}
+            </div>
+            <p className="text-white/60 text-sm mt-4">{t.floating.waHint}</p>
           </div>
         </section>
       </main>

@@ -6,7 +6,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 export default function Navbar() {
-  const { t } = useLanguage();
+  const { t, lh } = useLanguage();
   const navLinks = [
     // Private chef & catering is the main business (Nov 2026); other services sit under "Øvrige services".
     { label: t.nav.chef, href: '/privat-kok/' },
@@ -28,14 +28,14 @@ export default function Navbar() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center" aria-label="WiCare ApS home">
+          <Link href={lh('/')} className="flex items-center" aria-label="WiCare ApS home">
             <span className={`font-sans text-2xl md:text-[1.7rem] font-bold tracking-tight transition-colors duration-300 ${scrolled ? 'text-primary' : 'text-white'}`}>
               Wi<span className={scrolled ? 'text-[#3E7CA6]' : 'text-[#6BA8CE]'}>Care</span>
             </span>
           </Link>
           <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={`whitespace-nowrap text-sm font-medium tracking-wide transition-colors duration-300 ${scrolled ? 'text-primary hover:text-accent' : 'text-white/90 hover:text-white'}`}>{link.label}</Link>
+              <Link key={link.href} href={lh(link.href)} className={`whitespace-nowrap text-sm font-medium tracking-wide transition-colors duration-300 ${scrolled ? 'text-primary hover:text-accent' : 'text-white/90 hover:text-white'}`}>{link.label}</Link>
             ))}
           </nav>
           <div className="hidden lg:flex items-center gap-4">
@@ -43,7 +43,7 @@ export default function Navbar() {
             <a href="tel:+4552721102" className={`flex items-center gap-2 whitespace-nowrap text-sm font-medium transition-colors duration-300 ${scrolled ? 'text-primary hover:text-accent' : 'text-white/90 hover:text-white'}`}>
               <Phone size={16} /><span>+45 52 72 11 02</span>
             </a>
-            <Link href="/#book" className="whitespace-nowrap bg-accent text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-accent-deep transition-colors duration-200 shadow-md">{t.nav.bookNow}</Link>
+            <Link href={lh('/#book')} className="whitespace-nowrap bg-accent text-white text-sm font-medium px-6 py-2.5 rounded-full hover:bg-accent-deep transition-colors duration-200 shadow-md">{t.nav.bookNow}</Link>
           </div>
           <button onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} className={`lg:hidden transition-colors duration-300 ${scrolled ? 'text-primary' : 'text-white'}`}>
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -54,7 +54,7 @@ export default function Navbar() {
         <div className="lg:hidden bg-white border-t border-gray-100 shadow-xl">
           <div className="px-6 py-6 space-y-4">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="block text-primary font-medium py-2 border-b border-gray-50">{link.label}</Link>
+              <Link key={link.href} href={lh(link.href)} onClick={() => setMenuOpen(false)} className="block text-primary font-medium py-2 border-b border-gray-50">{link.label}</Link>
             ))}
             <div className="py-3">
               <LanguageSwitcher />
