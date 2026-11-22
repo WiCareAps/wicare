@@ -1,4 +1,5 @@
 import LandingPage from '@/components/LandingPage';
+import { hreflang } from '@/lib/i18n/routes';
 import { landingSchemas } from '@/lib/landingMeta';
 
 const title = 'Firmacatering nord for København – møder, receptioner & events | WiCare';
@@ -20,7 +21,7 @@ export const metadata = {
     'privat kok firmaarrangement',
     'WiCare ApS',
   ],
-  alternates: { canonical: '/firmacatering/' },
+  alternates: { canonical: '/firmacatering/', languages: hreflang('/firmacatering/') },
   openGraph: {
     title,
     description,
