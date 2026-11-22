@@ -1,4 +1,4 @@
-import { areas, getArea } from '@/lib/areas';
+import { areas, getArea, areaDepth } from '@/lib/areas';
 import { notFound } from 'next/navigation';
 import AreaLanding from '@/components/AreaLanding';
 
@@ -50,6 +50,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wicare.vip';
   const url = `${siteUrl}/omraader/${area.slug}/`;
+  const depthFaq = areaDepth[area.slug]?.da.faq;
   const serviceNames = ['Privat kok', 'Catering & firmacatering', 'Fester & selskaber', 'Julefrokost', 'Rengøring & erhvervsrengøring', 'Have & byggeri'];
 
   return (
@@ -87,6 +88,19 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
           }),
         }}
       />
+      {depthFaq && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              '@id': `${url}#faq`,
+              mainEntity: depthFaq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+            }),
+          }}
+        />
+      )}
       <AreaLanding slug={area.slug} />
     </>
   );
