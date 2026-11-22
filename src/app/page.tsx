@@ -8,6 +8,10 @@ import ExtraServices from '@/components/sections/ExtraServices';
 import ChefIntro from '@/components/ChefIntro';
 import Footer from '@/components/Footer';
 import FloatingActions from '@/components/FloatingActions';
+import { hreflang } from '@/lib/i18n/routes';
+
+// Title/description come from layout.tsx; this adds the Danish/English hreflang pair.
+export const metadata = { alternates: { canonical: '/', languages: hreflang('/') } };
 
 export default function Home() {
   return (

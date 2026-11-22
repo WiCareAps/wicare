@@ -3,6 +3,7 @@ import { services } from '@/lib/services';
 import { posts } from '@/lib/blog';
 import { areas } from '@/lib/areas';
 import type { MetadataRoute } from 'next';
+import { EN_ROUTES } from '@/lib/i18n/routes';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wicare.vip';
@@ -11,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/erhvervsrengoering/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${baseUrl}/privat-kok/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 }, // flagship: private dining
     { url: `${baseUrl}/firmacatering/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${baseUrl}/konfirmation/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${baseUrl}/selskaber/`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/julefrokost/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: `${baseUrl}/blog/`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
@@ -38,5 +40,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly',
     priority: 0.75,
   }));
-  return [...staticPages, ...servicePages, ...blogPages, ...areaPages];
+  // Danish ↔ English pairs: hreflang alternates on both entries + the /en/ URLs themselves.
+  const alt = (da: string) => ({ languages: { da: `${baseUrl}${da}`, en: `${baseUrl}${EN_ROUTES[da]}` } });
+  for (const e of staticPages) {
+    const path = e.url.replace(baseUrl, '');
+    if (EN_ROUTES[path]) e.alternates = alt(path);
+  }
+  const enPages: MetadataRoute.Sitemap = Object.entries(EN_ROUTES).map(([da, en]) => ({
+    url: `${baseUrl}${en}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.7,
+    alternates: alt(da),
+  }));
+  return [...staticPages, ...enPages, ...servicePages, ...blogPages, ...areaPages];
 }
