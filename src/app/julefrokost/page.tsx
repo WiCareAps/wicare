@@ -1,4 +1,5 @@
 import LandingPage from '@/components/LandingPage';
+import { hreflang } from '@/lib/i18n/routes';
 import { landingSchemas } from '@/lib/landingMeta';
 
 const title = 'Julefrokost med privat kok & catering nord for København | WiCare';
@@ -20,7 +21,7 @@ export const metadata = {
     'julefrokost nord for København',
     'WiCare ApS',
   ],
-  alternates: { canonical: '/julefrokost/' },
+  alternates: { canonical: '/julefrokost/', languages: hreflang('/julefrokost/') },
   openGraph: {
     title,
     description,
