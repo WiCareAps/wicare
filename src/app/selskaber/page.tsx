@@ -1,4 +1,5 @@
 import LandingPage from '@/components/LandingPage';
+import { hreflang } from '@/lib/i18n/routes';
 import { landingSchemas } from '@/lib/landingMeta';
 
 const title = 'Privat kok til fester & selskaber nord for København | WiCare';
@@ -22,7 +23,7 @@ export const metadata = {
     'selskaber nord for København',
     'WiCare ApS',
   ],
-  alternates: { canonical: '/selskaber/' },
+  alternates: { canonical: '/selskaber/', languages: hreflang('/selskaber/') },
   openGraph: {
     title,
     description,
