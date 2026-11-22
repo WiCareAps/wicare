@@ -6,12 +6,13 @@ import { areas } from '@/lib/areas';
 
 // Compact footer: brand + contact | quick links | areas, with legal links in the bottom bar.
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, lh } = useLanguage();
   const link = 'text-white/80 hover:text-accent transition-colors';
   const quickLinks = [
     { href: '/privat-kok/', label: t.nav.chef },
     { href: '/firmacatering/', label: t.nav.catering },
     { href: '/selskaber/', label: t.nav.parties },
+    { href: '/konfirmation/', label: t.nav.confirmation },
     { href: '/julefrokost/', label: t.nav.xmas },
     { href: '/#additional', label: t.nav.other },
     { href: '/erhvervsrengoering/', label: t.nav.cleaningBiz },
@@ -27,7 +28,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 text-center md:text-left">
           <div className="lg:col-span-4">
-            <Link href="/" className="inline-flex items-center" aria-label="WiCare ApS home">
+            <Link href={lh('/')} className="inline-flex items-center" aria-label="WiCare ApS home">
               <span className="font-sans text-2xl font-bold tracking-tight text-white">
                 Wi<span className="text-[#6BA8CE]">Care</span>
               </span>
@@ -50,7 +51,7 @@ export default function Footer() {
             <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm max-w-xs mx-auto md:mx-0">
               {quickLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className={link}>
+                  <Link href={lh(l.href)} className={link}>
                     {l.label}
                   </Link>
                 </li>

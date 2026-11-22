@@ -1,4 +1,5 @@
 import { services } from '@/lib/services';
+import { hreflang } from '@/lib/i18n/routes';
 import ServiceDetail from '@/components/ServiceDetail';
 import { areas } from '@/lib/areas';
 
@@ -15,7 +16,7 @@ export const metadata = {
   title,
   description,
   keywords: ['privat kok', 'privat kok middag derhjemme', 'privat kok København', 'privat kok Hellerup', 'privat kok Gentofte', 'privat kok Rudersdal', 'kok til middag', 'kok ud af huset', 'fine dining hjemme', 'WiCare ApS'],
-  alternates: { canonical: '/privat-kok/' },
+  alternates: { canonical: '/privat-kok/', languages: hreflang('/privat-kok/') },
   openGraph: {
     title,
     description,

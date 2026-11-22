@@ -1,22 +1,36 @@
 'use client';
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
 import { translations, type Locale } from './translations';
+import { isEnPath, toEn } from './routes';
 
 interface LanguageContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
   t: (typeof translations)['en'];
+  /** true on the crawlable English URLs (/en/...) — the language is fixed to English there. */
+  enRoute: boolean;
+  /** Localise an internal href: on /en/ pages, Danish URLs that have an English twin become /en/... */
+  lh: (href: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+// Crawlers must always see the language of the URL they fetched (Danish on Danish URLs),
+// so the automatic language switch below is skipped for them.
+const BOT_UA = /bot|crawl|spider|slurp|google|bing|yandex|duckduck|baidu|facebookexternalhit|lighthouse|headless|preview/i;
+
 export function LanguageProvider({ children, initialLocale }: { children: ReactNode; initialLocale?: Locale }) {
-  // Danish is the primary market, so the statically-rendered (crawlable) HTML
-  // defaults to Danish. Non-Danish visitors are switched to English client-side below.
-  const [locale, setLocaleState] = useState<Locale>(initialLocale || 'da');
+  const pathname = usePathname();
+  const enRoute = isEnPath(pathname);
+  // Danish is the primary market, so Danish URLs render Danish in the static (crawlable) HTML.
+  // /en/ URLs render English. Non-Danish human visitors on Danish URLs are switched to English client-side.
+  const [stateLocale, setLocaleState] = useState<Locale>(initialLocale || 'da');
+  const locale: Locale = enRoute ? 'en' : stateLocale;
 
   useEffect(() => {
-    if (initialLocale) return;
+    if (initialLocale || enRoute) return;
+    if (typeof navigator !== 'undefined' && (navigator.webdriver || BOT_UA.test(navigator.userAgent || ''))) return;
 
     // 1. A manual choice always wins.
     const stored = localStorage.getItem('wicare-locale');
@@ -41,7 +55,7 @@ export function LanguageProvider({ children, initialLocale }: { children: ReactN
       })
       .catch(() => {})
       .finally(() => clearTimeout(timeout));
-  }, [initialLocale]);
+  }, [initialLocale, enRoute]);
 
   useEffect(() => {
     if (typeof document !== 'undefined') document.documentElement.lang = locale;
@@ -49,11 +63,15 @@ export function LanguageProvider({ children, initialLocale }: { children: ReactN
 
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale);
-    localStorage.setItem('wicare-locale', newLocale);
+    try {
+      localStorage.setItem('wicare-locale', newLocale);
+    } catch {}
   };
 
+  const lh = useCallback((href: string) => (enRoute ? toEn(href) : href), [enRoute]);
+
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t: translations[locale] }}>
+    <LanguageContext.Provider value={{ locale, setLocale, t: translations[locale], enRoute, lh }}>
       {children}
     </LanguageContext.Provider>
   );

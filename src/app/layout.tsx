@@ -70,6 +70,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           imagesizes="100vw"
           fetchPriority="high"
         />
+        {/* English twins live under /en/ — mark the document language before anything renders */}
+        <script dangerouslySetInnerHTML={{ __html: "if(location.pathname==='/en'||location.pathname.indexOf('/en/')===0){document.documentElement.lang='en'}" }} />
         {/* Warm the connection for the client-side geo/language lookup */}
         <link rel="preconnect" href="https://ipapi.co" crossOrigin="anonymous" />
         {/* Consent Mode v2 — deny non-essential storage until the visitor opts in (GDPR) */}
@@ -136,6 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   { name: "Privat kok til middagen derhjemme", url: `${siteUrl}/privat-kok/` },
                   { name: "Firmacatering", url: `${siteUrl}/firmacatering/` },
                   { name: "Fester & selskaber", url: `${siteUrl}/selskaber/` },
+                  { name: "Konfirmation", url: `${siteUrl}/konfirmation/` },
                   { name: "Julefrokost", url: `${siteUrl}/julefrokost/` },
                   { name: "Rengøring – hjem & erhverv", url: `${siteUrl}/services/the-home/` },
                   { name: "Erhvervsrengøring", url: `${siteUrl}/erhvervsrengoering/` },

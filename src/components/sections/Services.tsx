@@ -12,7 +12,7 @@ const diningMeta = [
 ];
 
 export default function Services() {
-  const { t } = useLanguage();
+  const { t, lh } = useLanguage();
   const s = t.services;
   return (
     <section id="services" className="section-padding bg-white scroll-mt-20">
@@ -27,7 +27,7 @@ export default function Services() {
           {s.dining.map((d, i) => (
             <Link
               key={d.title}
-              href={diningMeta[i].href}
+              href={lh(diningMeta[i].href)}
               className={`group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${i === 0 ? 'bg-primary text-white shadow-xl' : 'bg-light text-primary shadow-md'}`}
             >
               <div className="relative h-64 overflow-hidden">

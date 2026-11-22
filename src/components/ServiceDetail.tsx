@@ -6,6 +6,8 @@ import Footer from '@/components/Footer';
 import FloatingActions from '@/components/FloatingActions';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import ChefIntro from '@/components/ChefIntro';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
+import { waEnquiry } from '@/lib/whatsapp';
 
 // Extra links shown on the private dining page (flagship) to the catering landing pages.
 const diningLinks = {
@@ -42,7 +44,7 @@ const detailImgMap: Record<string, string[]> = {
 type Slug = 'the-home' | 'the-table' | 'the-estate';
 
 export default function ServiceDetail({ slug }: { slug: Slug }) {
-  const { t, locale } = useLanguage();
+  const { t, locale, lh } = useLanguage();
   const service = t.serviceDetail[slug];
   const sp = t.servicePage;
   const Icon = iconMap[slug];
@@ -109,7 +111,7 @@ export default function ServiceDetail({ slug }: { slug: Slug }) {
               <h2 className="font-serif text-2xl md:text-3xl text-primary font-semibold text-center mb-8">{diningLinks[locale === 'da' ? 'da' : 'en'].heading}</h2>
               <div className="grid md:grid-cols-3 gap-6">
                 {diningLinks[locale === 'da' ? 'da' : 'en'].items.map((l) => (
-                  <Link key={l.href} href={l.href} className="group rounded-2xl border border-primary/10 p-7 hover:border-accent hover:shadow-lg transition-all">
+                  <Link key={l.href} href={lh(l.href)} className="group rounded-2xl border border-primary/10 p-7 hover:border-accent hover:shadow-lg transition-all">
                     <h3 className="font-serif text-xl text-primary font-semibold mb-2">{l.title}</h3>
                     <p className="text-gray-600 leading-relaxed">{l.desc}</p>
                     <span className="inline-block mt-4 text-accent-dark font-medium text-sm group-hover:translate-x-1 transition-transform">→</span>
@@ -132,12 +134,26 @@ export default function ServiceDetail({ slug }: { slug: Slug }) {
             >
               <Phone size={28} />+45 52 72 11 02
             </a>
+            {slug === 'the-table' && (
+              <div className="mt-5">
+                <a
+                  href={waEnquiry(locale, { occasion: locale === 'da' ? 'Privat middag' : 'Private dinner' })}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 bg-white border border-primary/15 hover:border-accent text-primary font-semibold px-6 py-3.5 rounded-full shadow-sm transition-all duration-300"
+                >
+                  <WhatsAppIcon size={20} />
+                  {t.floating.waEnquiry}
+                </a>
+                <p className="text-gray-500 text-sm mt-2">{t.floating.waHint}</p>
+              </div>
+            )}
           </div>
         </section>
 
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <Link href="/#services" className="inline-flex items-center gap-2 text-primary hover:text-accent font-medium transition-colors">
+            <Link href={lh('/#services')} className="inline-flex items-center gap-2 text-primary hover:text-accent font-medium transition-colors">
               <ArrowLeft size={16} />
               {sp.backToServices}
             </Link>

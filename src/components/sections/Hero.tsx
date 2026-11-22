@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { ChevronDown, Phone, MapPin } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
+import { waEnquiry } from '@/lib/whatsapp';
 
 function WhatsAppIcon({ size = 24 }: { size?: number }) {
   return (
@@ -12,8 +13,8 @@ function WhatsAppIcon({ size = 24 }: { size?: number }) {
 }
 
 export default function Hero() {
-  const { t } = useLanguage();
-  const wa = `https://wa.me/4552721102?text=${encodeURIComponent(t.floating.whatsappMsg)}`;
+  const { t, locale, lh } = useLanguage();
+  const wa = waEnquiry(locale);
 
   return (
     <section id="booking" className="relative min-h-screen flex items-start sm:items-center justify-center overflow-hidden pt-28 sm:pt-24 lg:pt-0">
@@ -46,7 +47,7 @@ export default function Hero() {
           </a>
         </div>
         <p className="text-white/80 text-base mt-4">
-          <Link href="/#services" className="underline underline-offset-4 hover:text-accent">{t.hero.ctaServices}</Link>
+          <Link href={lh('/#services')} className="underline underline-offset-4 hover:text-accent">{t.hero.ctaServices}</Link>
         </p>
         <p className="text-lg md:text-2xl text-white/90 max-w-3xl mx-auto mt-8 leading-relaxed font-light whitespace-pre-line">
           <strong className="block font-bold text-white mb-2">{t.hero.motto}</strong>
