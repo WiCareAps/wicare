@@ -12,7 +12,7 @@ const copy = {
 };
 
 export default function SeasonalBanner() {
-  const { locale } = useLanguage();
+  const { locale, lh } = useLanguage();
   const [inSeason, setInSeason] = useState(true);
   useEffect(() => {
     const m = new Date().getMonth(); // 0 = January
@@ -22,7 +22,7 @@ export default function SeasonalBanner() {
   const c = copy[locale === 'da' ? 'da' : 'en'];
   return (
     <div className="bg-accent text-primary">
-      <Link href="/julefrokost/" className="block max-w-7xl mx-auto px-6 lg:px-8 py-3 text-center text-sm md:text-base hover:underline underline-offset-4">
+      <Link href={lh('/julefrokost/')} className="block max-w-7xl mx-auto px-6 lg:px-8 py-3 text-center text-sm md:text-base hover:underline underline-offset-4">
         <strong className="font-semibold">{c.lead}</strong>
         <span className="mx-2" aria-hidden="true">·</span>
         {c.text} <span className="font-semibold whitespace-nowrap">{c.cta} →</span>

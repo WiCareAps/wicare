@@ -1,13 +1,15 @@
 'use client';
 import { Phone, Mail } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
+import { waEnquiry } from '@/lib/whatsapp';
 
 // "Klar til at komme i gang?" — call-first (the owner prefers phone calls, so there is no form).
 // id="book" is the target of every on-site "Book Now" link; id="contact" keeps old /#contact links working.
 export default function Booking() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const b = t.booking;
-  const wa = `https://wa.me/4552721102?text=${encodeURIComponent(t.floating.whatsappMsg)}`;
+  const wa = waEnquiry(locale);
 
   return (
     <section id="book" className="py-16 md:py-24 bg-light">
@@ -25,11 +27,17 @@ export default function Booking() {
             +45 52 72 11 02
           </a>
 
-          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 mt-6 text-sm">
-            <span className="text-gray-500">{b.or}:</span>
-            <a href={wa} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent-dark underline underline-offset-4 decoration-primary/30 transition-colors">
-              {b.whatsapp}
+          {/* WhatsApp quick enquiry — prefilled template (date, guests, town) */}
+          <div className="mt-4">
+            <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 bg-white border border-primary/15 hover:border-accent text-primary font-semibold px-6 py-3.5 rounded-full shadow-sm transition-all duration-300">
+              <WhatsAppIcon size={20} />
+              {t.floating.waEnquiry}
             </a>
+            <p className="text-gray-500 text-sm mt-2 max-w-md mx-auto lg:mx-0">{t.floating.waHint}</p>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 mt-5 text-sm">
+            <span className="text-gray-500">{b.or}:</span>
             <a href="mailto:hello@wicare.vip" className="inline-flex items-center gap-1.5 text-primary hover:text-accent-dark underline underline-offset-4 decoration-primary/30 transition-colors">
               <Mail size={14} aria-hidden="true" />
               hello@wicare.vip
