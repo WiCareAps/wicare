@@ -41,3 +41,4 @@ Last updated: 18 Nov 2026.
 - 3 Nov 2026: sitemap resubmitted; indexing requested for home, the-table, firmacatering, julefrokost, 6 town pages.
 - 7 Nov 2026: indexing requested for 4 more towns + erhvervsrengøring; /selskaber/ already indexed.
 - 18 Nov 2026: /privat-kok/, home, Gentofte requested in Google; 29 URLs submitted to Bing; Bing sitemap submitted.
+- 22 Nov 2026: **/privat-kok/ is indexed** (4 days). Google last 7 days (14–20 Nov): 1 click, 196 impressions, avg position 27.8 (28 days: 8 clicks, 1,710 impressions, pos 36). Impressions are now almost all dining searches; the old cleaning impressions are gone, so totals are lower but better targeted. Homepage averages position 9.9; "catering jægersborg/klampenborg" ~11–12, "catering holte" ~16, "catering gentofte" ~23, "privat kok (københavn)" ~53–63. Bing data only just started (0 so far).

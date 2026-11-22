@@ -19,7 +19,7 @@ Last updated: 18 Nov 2026. Tick items off (or delete them) as they're done.
 - [ ] Every 1st of the month: automatic Claude audits run (site audit 08:00, email-forwarding check 08:30) – read the report in `~/Documents/Claude/WiCare/`.
 
 ## Watch (Search Console / Bing, every 2–4 weeks)
-- [ ] Is **/privat-kok/** indexed by Google yet? (requested 18 Nov). The old `/services/the-table/` never got indexed.
+- [x] ~~Is **/privat-kok/** indexed by Google yet?~~ Yes – indexed by 22 Nov 2026 (the old `/services/the-table/` never was).
 - [ ] Do the "catering <town>" searches climb from page 2 (positions 11–25) to page 1?
 - [ ] "erhvervsrengøring <town>" impressions will drop (titles now lead with catering) – expected; decide if that's OK.
 - [ ] GA4 key event **generate_lead** (phone/WhatsApp/email clicks) – are real leads coming in? Ignore test leads with method = `test`.
