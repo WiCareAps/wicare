@@ -3,6 +3,7 @@
 Most recent first. Detailed technical history: `git log` on GitHub (`WiCareAps/wicare`).
 
 ## November 2026
+- **22 Nov** – More ways for clients to reach us and be found: **WhatsApp enquiry button** (opens WhatsApp with a ready message: occasion, date, guests, town – filled in per page); new page **/konfirmation/** (confirmation 2027); **English pages Google can index** – `/en/`, `/en/private-chef/`, `/en/corporate-catering/`, `/en/parties/`, `/en/christmas-lunch/` (with hreflang, EN/DK switch moves between them); **deeper local text + FAQ** on Jægersborg, Klampenborg, Holte, Gentofte and Kongens Lyngby; **Cloudflare Web Analytics** on (cookie-free, all visitors); privacy policy section 5 updated (statistics + WhatsApp).
 - **18 Nov** – SEO & AI audit. New flagship page **/privat-kok/** (old `/services/the-table/` never got indexed → now forwards). Titles now keyword-first; town pages lead with "Catering & privat kok i …". Business data for Google/AI rewritten in Danish with the chef and all services; added `/llms.txt`. **Cloudflare now allows all AI crawlers/assistants** (was blocking them). **Bing Webmaster Tools** set up, sitemap + 29 URLs submitted. Repo moved to **WiCareAps/wicare**; publishing via Chrome upload + pull request (sandbox can't push).
 - **9 Nov** – dreamhousegift.com (now a for-sale page): old sitemap removed from Search Console.
 - **7 Nov** – Private dining page got its own title (no longer competing with the homepage). More indexing requests.

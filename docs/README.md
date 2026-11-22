@@ -1,7 +1,7 @@
 # WiCare – handbook (start here)
 
 Everything about the wicare.vip website in one place, so nothing gets forgotten.
-Last updated: 18 Nov 2026.
+Last updated: 22 Nov 2026.
 
 ## The business in one paragraph
 WiCare ApS (CVR 46213270) is a **private chef & catering business** north of Copenhagen. Main offers: private dinners at home, corporate catering, parties & celebrations, and Christmas lunches (julefrokost), cooked by our chef **Wiktoria R.** (13+ years incl. Michelin-starred restaurants and sous-chef at the Danish Parliament). Cleaning (homes & businesses) and garden & construction are **additional services**. No fixed prices – everything is agreed with the customer. Contact is call-first: **+45 52 72 11 02**, WhatsApp, **hello@wicare.vip**.
@@ -30,7 +30,8 @@ Older reports (July–Sept 2026 audits, growth plan, "get found locally" guide) 
 - Redesign prototypes (not live): https://redesign-wicare.rutkowska-wiktoria.workers.dev/prototypes/homepage/
 
 ## Site map (main pages)
-- `/` homepage · `/privat-kok/` private chef (flagship) · `/firmacatering/` · `/selskaber/` parties · `/julefrokost/` (seasonal)
+- `/` homepage · `/privat-kok/` private chef (flagship) · `/firmacatering/` · `/selskaber/` parties · `/konfirmation/` confirmations · `/julefrokost/` (seasonal)
+- English (indexable): `/en/` · `/en/private-chef/` · `/en/corporate-catering/` · `/en/parties/` · `/en/christmas-lunch/`
 - `/omraader/<town>/` – 20 town pages (Hellerup … Allerød)
 - Additional: `/services/the-home/` cleaning · `/erhvervsrengoering/` commercial cleaning · `/services/the-estate/` garden & construction
 - `/faq/` · `/blog/` · `/careers/` · `/card/` (digital business card) · `/privacy/` · `/terms/`

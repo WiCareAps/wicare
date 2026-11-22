@@ -1,7 +1,7 @@
 # WiCare – SEO & AI visibility
 
 How wicare.vip gets found on Google, Bing and AI assistants (ChatGPT, Gemini, Copilot, Perplexity, Claude).
-Last updated: 18 Nov 2026.
+Last updated: 22 Nov 2026.
 
 ## Where we stand (18 Nov 2026)
 - Last 90 days on Google: **18 clicks, 6,200 impressions, average position 34**. Most impressions came from old cleaning searches ("erhvervsrengøring Virum" …).
@@ -18,7 +18,8 @@ Last updated: 18 Nov 2026.
   - Town pages: "Catering & privat kok i <town> | WiCare" (people search "catering <town>" most)
 - Every page has a unique Danish title + description, canonical URL, and structured data (LocalBusiness, Service, FAQ, Breadcrumb).
 - One topic per page – don't let two pages compete for the same search (that's why /privat-kok/ ≠ homepage).
-- 20 town pages each have their own unique text (never copy-paste between towns).
+- 20 town pages each have their own unique text (never copy-paste between towns). The 5 closest to page one (Jægersborg, Klampenborg, Holte, Gentofte, Kongens Lyngby) also have a longer local section + 3 FAQs (`areaDepth` in `src/lib/areas.ts`).
+- **English pages** live under `/en/` (home, private-chef, corporate-catering, parties, christmas-lunch). Each pair links to the other with hreflang (`da`, `en`, `x-default` = Danish). Danish stays the default; the English copy is for expats/embassies in Hellerup–Gentofte ("private chef copenhagen"). Pairs are defined in `src/lib/i18n/routes.ts` – add a pair there when a new English page is built.
 - Never link the old `/services/the-table/` – it only forwards to `/privat-kok/`.
 - After adding or renaming pages: request indexing in Search Console (~10/day limit) and submit in Bing (100/day).
 
@@ -41,4 +42,5 @@ Last updated: 18 Nov 2026.
 - 3 Nov 2026: sitemap resubmitted; indexing requested for home, the-table, firmacatering, julefrokost, 6 town pages.
 - 7 Nov 2026: indexing requested for 4 more towns + erhvervsrengøring; /selskaber/ already indexed.
 - 18 Nov 2026: /privat-kok/, home, Gentofte requested in Google; 29 URLs submitted to Bing; Bing sitemap submitted.
+- 22 Nov 2026 (later): published WhatsApp enquiry, /konfirmation/, 5 English pages, deeper town pages.
 - 22 Nov 2026: **/privat-kok/ is indexed** (4 days). Google last 7 days (14–20 Nov): 1 click, 196 impressions, avg position 27.8 (28 days: 8 clicks, 1,710 impressions, pos 36). Impressions are now almost all dining searches; the old cleaning impressions are gone, so totals are lower but better targeted. Homepage averages position 9.9; "catering jægersborg/klampenborg" ~11–12, "catering holte" ~16, "catering gentofte" ~23, "privat kok (københavn)" ~53–63. Bing data only just started (0 so far).
