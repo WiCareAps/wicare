@@ -1,4 +1,4 @@
-// Copy for the catering landing pages: /julefrokost/, /firmacatering/ (Sept 2026) and /selskaber/ (Nov 2026).
+// Copy for the catering landing pages: /julefrokost/, /firmacatering/ (Sept 2026), /selskaber/ and /konfirmation/ (Nov 2026).
 // Claims policy (see CLAUDE.md): chef Wiktoria R., 13+ years incl. Michelin-starred restaurants and the
 // Danish Parliament; wine pairing, setup/service/cleanup and event planning are confirmed; NO fixed prices,
 // NO capacity or lead-time promises — everything is agreed with the customer.
@@ -22,7 +22,7 @@ export interface LandingCopy {
   ctaDesc: string;
 }
 
-export type LandingKey = 'julefrokost' | 'firmacatering' | 'selskaber';
+export type LandingKey = 'julefrokost' | 'firmacatering' | 'selskaber' | 'konfirmation';
 
 export const landings: Record<LandingKey, { da: LandingCopy; en: LandingCopy }> = {
   julefrokost: {
@@ -202,6 +202,7 @@ export const landings: Record<LandingKey, { da: LandingCopy; en: LandingCopy }> 
         { href: '/privat-kok/', title: 'Privat middag', desc: 'En privat kok til middagen derhjemme.' },
         { href: '/firmacatering/', title: 'Firmacatering', desc: 'Møder, receptioner og kundearrangementer.' },
         { href: '/julefrokost/', title: 'Julefrokost 2026', desc: 'Julefrokost derhjemme eller i firmaet – book i god tid.' },
+        { href: '/konfirmation/', title: 'Konfirmation 2027', desc: 'Konfirmationsfrokost eller -middag med privat kok.' },
       ],
       areasHeading: 'Vi kommer til jer i',
       faqHeading: 'Spørgsmål om fester og selskaber',
@@ -240,6 +241,7 @@ export const landings: Record<LandingKey, { da: LandingCopy; en: LandingCopy }> 
         { href: '/privat-kok/', title: 'Private dinner', desc: 'A private chef for dinner at home.' },
         { href: '/firmacatering/', title: 'Corporate catering', desc: 'Meetings, receptions and client events.' },
         { href: '/julefrokost/', title: 'Christmas lunch 2026', desc: 'A Christmas lunch at home or at the company – book early.' },
+        { href: '/konfirmation/', title: 'Confirmation 2027', desc: 'A confirmation lunch or dinner with a private chef.' },
       ],
       areasHeading: 'We come to you in',
       faqHeading: 'Questions about parties and celebrations',
@@ -253,6 +255,81 @@ export const landings: Record<LandingKey, { da: LandingCopy; en: LandingCopy }> 
       ],
       ctaTitle: 'Planning a party?',
       ctaDesc: 'Call us and we will find a date and put together a menu for your occasion.',
+    },
+  },
+  // Konfirmation (Nov 2026): families book in Jan–Feb for the April–May season. Owner-confirmed occasion.
+  konfirmation: {
+    da: {
+      badge: 'Konfirmation 2027',
+      h1: 'Privat kok til konfirmationen',
+      intro:
+        'Konfirmation derhjemme eller i et lokale nord for København. Vores kok, Wiktoria R., laver frokosten eller middagen, så I kan være sammen med konfirmanden og gæsterne. Menu, omfang og pris aftaler vi med jer.',
+      ctaSecondary: 'Konfirmationerne ligger i foråret – ring gerne i god tid',
+      cardsHeading: 'Til konfirmationen',
+      cards: [
+        { title: 'Konfirmationsfrokost', desc: 'En festlig frokost efter kirken – som buffet eller serveret ved bordet.' },
+        { title: 'Til hele familien', desc: 'En menu, der passer til både børn, unge og voksne – og til allergier og kostbehov.' },
+        { title: 'Vin og servering', desc: 'Vin til maden, servering og oprydning efter aftale, så I kan være værter hele dagen.' },
+        { title: 'Konfirmationsmiddag', desc: 'Middagen om aftenen derhjemme eller i et lokale efter jeres valg.' },
+      ],
+      howHeading: 'Sådan foregår det',
+      how: [
+        { title: 'Ring til os', desc: 'Fortæl om datoen, antallet af gæster og hvor festen skal holdes.' },
+        { title: 'Vi sammensætter menuen', desc: 'Klassisk eller moderne, buffet eller serveret – tilpasset jeres gæster og kostbehov.' },
+        { title: 'Vi laver maden hos jer', desc: 'Anretning, servering, vin og oprydning efter aftale, så I kan nyde dagen.' },
+      ],
+      moreHeading: 'Mere fra vores køkken',
+      more: [
+        { href: '/selskaber/', title: 'Fester & selskaber', desc: 'Fødselsdage, jubilæer, bryllupper og havefester.' },
+        { href: '/privat-kok/', title: 'Privat middag', desc: 'En privat kok til middagen derhjemme.' },
+      ],
+      areasHeading: 'Vi kommer til jer i',
+      faqHeading: 'Spørgsmål om konfirmation',
+      faq: [
+        { q: 'Hvornår skal vi booke kok til konfirmationen?', a: 'Jo før, jo bedre. Mange konfirmationer ligger de samme weekender i foråret, så ring gerne allerede nu, hvis I kender datoen.' },
+        { q: 'Kan I lave maden hjemme hos os?', a: 'Ja. Vi laver maden hjemme hos jer eller i et lokale efter jeres valg.' },
+        { q: 'Hvor mange gæster kan I lave mad til?', a: 'Vi tilpasser os jeres selskab – fra en mindre frokost for den nærmeste familie til den store fest. Fortæl os antallet af gæster, så finder vi en løsning.' },
+        { q: 'Kan I tage hensyn til allergier, vegetarer og børn?', a: 'Ja. Menuen tilpasses allergier, vegetarer og andre kostbehov – og kan sammensættes, så den passer til både børn og voksne.' },
+        { q: 'Hvad koster en kok til konfirmation?', a: 'Prisen afhænger af menu, antal gæster, og om I ønsker servering og vin. Vi har ingen faste pakker og aftaler altid prisen med jer, før vi går i gang.' },
+      ],
+      ctaTitle: 'Planlægger I konfirmation?',
+      ctaDesc: 'Ring til os, så finder vi en løsning til jeres dag og sammensætter en menu til konfirmanden og gæsterne.',
+    },
+    en: {
+      badge: 'Confirmation 2027',
+      h1: 'A private chef for the confirmation',
+      intro:
+        'A confirmation celebration at home or at a venue north of Copenhagen. Our chef, Wiktoria R., cooks the lunch or dinner, so you can spend the day with the confirmand and your guests. Menu, scope and price are agreed with you.',
+      ctaSecondary: 'Confirmations fall in spring – call early',
+      cardsHeading: 'For the confirmation',
+      cards: [
+        { title: 'Confirmation lunch', desc: 'A festive lunch after church – as a buffet or served at the table.' },
+        { title: 'For the whole family', desc: 'A menu that suits children, teenagers and adults – and allergies and dietary needs.' },
+        { title: 'Wine and service', desc: 'Wine with the food, service and cleanup by arrangement, so you can host all day.' },
+        { title: 'Confirmation dinner', desc: 'The evening dinner at home or at a venue of your choice.' },
+      ],
+      howHeading: 'How it works',
+      how: [
+        { title: 'Call us', desc: 'Tell us the date, the number of guests and where the party will be.' },
+        { title: 'We design the menu', desc: 'Classic or modern, buffet or served – adapted to your guests and dietary needs.' },
+        { title: 'We cook at your place', desc: 'Plating, service, wine and cleanup by arrangement, so you can enjoy the day.' },
+      ],
+      moreHeading: 'More from our kitchen',
+      more: [
+        { href: '/selskaber/', title: 'Parties & celebrations', desc: 'Birthdays, anniversaries, weddings and garden parties.' },
+        { href: '/privat-kok/', title: 'Private dinner', desc: 'A private chef for dinner at home.' },
+      ],
+      areasHeading: 'We come to you in',
+      faqHeading: 'Questions about confirmations',
+      faq: [
+        { q: 'When should we book a chef for the confirmation?', a: 'The sooner the better. Many confirmations fall on the same spring weekends, so call now if you know the date.' },
+        { q: 'Can you cook at our home?', a: 'Yes. We cook at your home or at a venue of your choice.' },
+        { q: 'How many guests can you cook for?', a: 'We adapt to your party – from a small lunch for close family to the big celebration. Tell us the number of guests and we will find a solution.' },
+        { q: 'Can you cater for allergies, vegetarians and children?', a: 'Yes. The menu is adapted to allergies, vegetarians and other dietary needs – and can be put together to suit both children and adults.' },
+        { q: 'What does a chef for a confirmation cost?', a: 'It depends on the menu, the number of guests and whether you would like service and wine. We have no fixed packages and always agree the price with you before we start.' },
+      ],
+      ctaTitle: 'Planning a confirmation?',
+      ctaDesc: 'Call us and we will find a solution for your day and put together a menu for the confirmand and your guests.',
     },
   },
 };

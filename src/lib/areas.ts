@@ -511,3 +511,139 @@ export const areaDining: Record<string, { da: string; en: string }> = {
     en: 'Private chef and catering in Allerød – for a family party, an anniversary or a company event. We cook on site, serve by arrangement and clean up afterwards.',
   },
 };
+
+// Local depth for the 5 towns closest to Google's page one (Nov 2026): unique local text + FAQ.
+// Only facts about the towns themselves and confirmed WiCare claims — no fake references or prices.
+type DepthCopy = { heading: string; text: string[]; faq: { q: string; a: string }[] };
+export const areaDepth: Record<string, { da: DepthCopy; en: DepthCopy }> = {
+  jaegersborg: {
+    da: {
+      heading: 'Privat kok i Jægersborg – middagen uden at stå i køkkenet',
+      text: [
+        'Jægersborg ligger mellem Gentofte og Lyngby, tæt på Jægersborg Dyrehave og med Jægersborg Allé som byens travle hovedgade. Mange inviterer til middag i villaen eller rækkehuset – til fødselsdagen, jubilæet eller weekendens middagsselskab – og vil hellere være sammen med gæsterne end stå ved komfuret.',
+        'Vores kok, Wiktoria R., kommer hjem til jer i Jægersborg, laver maden i jeres køkken, serverer efter aftale og rydder op bagefter. Menuen sammensættes ud fra jeres ønsker, sæsonens råvarer og eventuelle allergier – og prisen aftales, før vi går i gang.',
+      ],
+      faq: [
+        { q: 'Kommer jeres kok hjem til os i Jægersborg?', a: 'Ja. Jægersborg er en del af vores faste område i Gentofte Kommune. Kokken laver maden i jeres køkken og rydder op bagefter.' },
+        { q: 'Kan I lave mad til en fødselsdag eller et jubilæum?', a: 'Ja. Fra en middag for få gæster til en større fest – vi tilpasser menuen og omfanget til anledningen.' },
+        { q: 'Hvad koster en privat kok i Jægersborg?', a: 'Det afhænger af menu, antal gæster, og om I ønsker vin og servering. Vi har ingen faste pakker og aftaler altid prisen med jer på forhånd.' },
+      ],
+    },
+    en: {
+      heading: 'Private chef in Jægersborg – dinner without the kitchen duty',
+      text: [
+        'Jægersborg sits between Gentofte and Lyngby, close to the Jægersborg Dyrehave deer park, with Jægersborg Allé as its busy high street. Many hosts invite guests to dinner in the villa or townhouse – for a birthday, an anniversary or a weekend dinner party – and would rather spend the evening with their guests than at the stove.',
+        'Our chef, Wiktoria R., comes to your home in Jægersborg, cooks in your kitchen, serves by arrangement and cleans up afterwards. The menu is built around your wishes, seasonal produce and any allergies – and the price is agreed before we start.',
+      ],
+      faq: [
+        { q: 'Will your chef come to our home in Jægersborg?', a: 'Yes. Jægersborg is part of our regular area in Gentofte Municipality. The chef cooks in your kitchen and cleans up afterwards.' },
+        { q: 'Can you cook for a birthday or an anniversary?', a: 'Yes. From a dinner for a few guests to a bigger party – we adapt the menu and scope to the occasion.' },
+        { q: 'What does a private chef cost in Jægersborg?', a: 'It depends on the menu, the number of guests and whether you would like wine and service. We have no fixed packages and always agree the price with you in advance.' },
+      ],
+    },
+  },
+  klampenborg: {
+    da: {
+      heading: 'Privat kok i Klampenborg – fra villaen til sommerfesten',
+      text: [
+        'Klampenborg byder på noget af det smukkeste nord for København: Bellevue Strand, Dyrehaven og villaerne langs Strandvejen. Det er rammen om mange middagsselskaber, havefester og sommerfester, hvor værterne gerne vil kunne nyde aftenen sammen med deres gæster.',
+        'Vores kok, Wiktoria R., har 13+ års erfaring fra professionelle køkkener – bl.a. som souschef i Folketinget og i Michelin-restauranter. Hun sammensætter menuen sammen med jer, laver maden på stedet og står for servering og vin efter aftale.',
+      ],
+      faq: [
+        { q: 'Kan I lave mad til en havefest eller sommerfest i Klampenborg?', a: 'Ja. Have- og sommerfester er en af vores anledninger – fra tapas og buffet til en siddende middag.' },
+        { q: 'Kan vi få vin til maden?', a: 'Ja. Vi kan sammensætte vin til menuen efter aftale.' },
+        { q: 'Laver I også mad til virksomheder i Klampenborg?', a: 'Ja – fx kundemiddage, receptioner og firmafrokoster. Menu, omfang og pris aftales med jer.' },
+      ],
+    },
+    en: {
+      heading: 'Private chef in Klampenborg – from the villa to the summer party',
+      text: [
+        'Klampenborg has some of the most beautiful surroundings north of Copenhagen: Bellevue Beach, the Dyrehaven deer park and the villas along Strandvejen. It is the setting for many dinner parties, garden parties and summer parties where the hosts want to enjoy the evening with their guests.',
+        'Our chef, Wiktoria R., has 13+ years of experience in professional kitchens – including as sous-chef at the Danish Parliament and in Michelin-starred restaurants. She designs the menu with you, cooks on site and handles service and wine by arrangement.',
+      ],
+      faq: [
+        { q: 'Can you cater a garden party or summer party in Klampenborg?', a: 'Yes. Garden and summer parties are one of our occasions – from tapas and buffets to a seated dinner.' },
+        { q: 'Can we have wine with the food?', a: 'Yes. We can pair wine with the menu by arrangement.' },
+        { q: 'Do you also cater for companies in Klampenborg?', a: 'Yes – for example client dinners, receptions and company lunches. Menu, scope and price are agreed with you.' },
+      ],
+    },
+  },
+  holte: {
+    da: {
+      heading: 'Privat kok i Holte – middage ved søerne og i villaen',
+      text: [
+        'Holte er hjertet af Rudersdal med Furesøen, Vejlesø og Geels Skov som naboer og masser af villaer med plads til gæster. Her holder man både den runde fødselsdag, konfirmationen og sommerfesten i haven – og virksomhederne i området holder møder, receptioner og julefrokoster.',
+        'Med en privat kok fra WiCare får I en menu, der passer til netop jeres anledning. Vores kok laver maden hos jer, tager hensyn til allergier og kostbehov og rydder op bagefter, så I kan være værter uden travlhed.',
+      ],
+      faq: [
+        { q: 'Laver I mad til konfirmationer i Holte?', a: 'Ja. Konfirmationsfrokost eller -middag derhjemme eller i et lokale efter jeres valg. Ring gerne i god tid – mange konfirmationer ligger de samme weekender i foråret.' },
+        { q: 'Kan I lave julefrokost for en virksomhed i Holte?', a: 'Ja. Firmajulefrokost på kontoret eller et sted efter jeres valg – menu, omfang og pris aftales med jer.' },
+        { q: 'Hvor mange gæster kan I lave mad til?', a: 'Vi tilpasser os jeres selskab. Fortæl os, hvor mange I bliver, så finder vi den rette løsning.' },
+      ],
+    },
+    en: {
+      heading: 'Private chef in Holte – dinners by the lakes and in the villa',
+      text: [
+        'Holte is the heart of Rudersdal, with Lake Furesø, Vejlesø and Geels Skov forest on its doorstep and plenty of villas with room for guests. It is where people hold the milestone birthday, the confirmation and the summer party in the garden – and local companies hold meetings, receptions and Christmas lunches.',
+        'With a private chef from WiCare you get a menu made for your occasion. Our chef cooks at your place, caters for allergies and dietary needs and cleans up afterwards, so you can host without the rush.',
+      ],
+      faq: [
+        { q: 'Do you cook for confirmations in Holte?', a: 'Yes. A confirmation lunch or dinner at home or at a venue of your choice. Call early – many confirmations fall on the same spring weekends.' },
+        { q: 'Can you do a company Christmas lunch in Holte?', a: 'Yes. A company Christmas lunch at the office or a venue of your choice – menu, scope and price are agreed with you.' },
+        { q: 'How many guests can you cook for?', a: 'We adapt to your party. Tell us how many you will be and we will find the right solution.' },
+      ],
+    },
+  },
+  gentofte: {
+    da: {
+      heading: 'Privat kok og catering i Gentofte – derhjemme og i virksomheden',
+      text: [
+        'Gentofte – med Gentofte Sø, Bernstorffparken og de rolige villaveje – er et af de steder, hvor mange vælger at holde middagen derhjemme. Det gælder både den intime middag for to, familiens konfirmation og firmaets kundearrangement.',
+        'Vores kok, Wiktoria R., sammensætter menuen ud fra jeres smag og anledningen, laver maden på stedet og kan stå for vin og servering. Der er ingen faste pakker – omfang og pris aftales med jer, før vi går i gang.',
+      ],
+      faq: [
+        { q: 'Hvad koster catering i Gentofte?', a: 'Prisen afhænger af menu, antal gæster, og om I ønsker servering og vin. Ring til os, så får I en pris på netop jeres arrangement.' },
+        { q: 'Kan I lave mad til en reception eller et kundearrangement i Gentofte?', a: 'Ja. Vi laver catering til receptioner, møder og kundemiddage – på kontoret eller et sted efter jeres valg.' },
+        { q: 'Kan I tage hensyn til allergier og vegetarer?', a: 'Ja. Menuen tilpasses allergier, vegetarer og andre kostbehov – fortæl os om dem, når I ringer.' },
+      ],
+    },
+    en: {
+      heading: 'Private chef and catering in Gentofte – at home and at work',
+      text: [
+        'Gentofte – with Lake Gentofte, Bernstorff Park and its quiet residential streets – is one of the places where many people choose to hold dinner at home. That goes for an intimate dinner for two, the family confirmation and the company’s client event.',
+        'Our chef, Wiktoria R., designs the menu around your taste and the occasion, cooks on site and can handle wine and service. There are no fixed packages – scope and price are agreed with you before we start.',
+      ],
+      faq: [
+        { q: 'What does catering cost in Gentofte?', a: 'It depends on the menu, the number of guests and whether you would like service and wine. Call us and you will get a price for your specific event.' },
+        { q: 'Can you cater a reception or client event in Gentofte?', a: 'Yes. We cater receptions, meetings and client dinners – at the office or a venue of your choice.' },
+        { q: 'Can you cater for allergies and vegetarians?', a: 'Yes. The menu is adapted to allergies, vegetarians and other dietary needs – just tell us when you call.' },
+      ],
+    },
+  },
+  'kongens-lyngby': {
+    da: {
+      heading: 'Privat kok og firmacatering i Kongens Lyngby',
+      text: [
+        'Kongens Lyngby er både et sted at bo – omkring Lyngby Sø og Bagsværd Sø – og et travlt erhvervsområde med DTU og mange virksomheder og kontorer. Derfor laver vi både private middage og catering til møder, frokoster og firmafester i Lyngby.',
+        'Til virksomheder sammensætter vi menuen efter antal deltagere, tidspunkt og kostbehov, og vi kan stå for anretning, servering og oprydning efter aftale. Til private middage kommer kokken hjem til jer og laver maden i jeres køkken.',
+      ],
+      faq: [
+        { q: 'Laver I firmafrokost og forplejning til møder i Lyngby?', a: 'Ja. Frokost til møder, workshops og hele teamet – anrettet hos jer. Omfang og pris aftales med jer.' },
+        { q: 'Kan I lave julefrokost for virksomheden i Lyngby?', a: 'Ja. Firmajulefrokost på kontoret eller et sted efter jeres valg – book gerne i god tid, da december er travl.' },
+        { q: 'Kommer kokken også hjem til private i Lyngby?', a: 'Ja. Vores kok laver middagen hjemme hos jer – fra middagen for to til fødselsdagen med familien.' },
+      ],
+    },
+    en: {
+      heading: 'Private chef and corporate catering in Kongens Lyngby',
+      text: [
+        'Kongens Lyngby is both a place to live – around Lake Lyngby and Lake Bagsværd – and a busy business area with DTU and many companies and offices. That is why we cook both private dinners and catering for meetings, lunches and company parties in Lyngby.',
+        'For companies we plan the menu around the number of guests, the time of day and dietary needs, and we can handle plating, service and cleanup by arrangement. For private dinners the chef comes to your home and cooks in your kitchen.',
+      ],
+      faq: [
+        { q: 'Do you cater company lunches and meetings in Lyngby?', a: 'Yes. Lunch for meetings, workshops or the whole team – served at your place. Scope and price are agreed with you.' },
+        { q: 'Can you do a company Christmas lunch in Lyngby?', a: 'Yes. A company Christmas lunch at the office or a venue of your choice – book early, December gets busy.' },
+        { q: 'Does the chef also cook for private homes in Lyngby?', a: 'Yes. Our chef cooks dinner in your home – from a dinner for two to the family birthday.' },
+      ],
+    },
+  },
+};
